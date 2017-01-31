@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { FormsModule,ReactiveFormsModule   } from '@angular/forms';
+import { SaveService } from '../shared/services/save.service'
+import { RouterModule } from '@angular/router';
+import { HttpModule, JsonpModule  } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
@@ -12,9 +14,17 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    JsonpModule,
+    RouterModule,
+    ReactiveFormsModule 
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [SaveService],
+  bootstrap: [AppComponent],
+  exports: [
+    FormsModule,
+    RouterModule,
+    HttpModule
+  ]
 })
 export class AppModule { }
