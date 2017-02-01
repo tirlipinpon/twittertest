@@ -4,6 +4,7 @@ import { Observable  } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
+import { userData, mock, userDataError } from '../mocks/user-data.mock';
 
 @Injectable()
 export class SaveService {
@@ -12,31 +13,8 @@ export class SaveService {
      private heroesUrl = 'https://api.twitter.com/1.1/followers/ids.json?screen_name=';  // URL to web API
      private token ="Bearer AAAAAAAAAAAAAAAAAAAAANyyywAAAAAAe8ehULnd1pNJiVags0KXlr%2BIKGI%3DOYoEegQqHwscDUXGwDkEdrjDDtoSAOFtkfjLbMgGTtj1AJlWTx";
 
-private mock= {
-  "ids": [
-    3046359254,
-    661723,
-    1854996806,
-    269739291,
-    220752898,
-    2887311059,
-    17508137,
-    2405989642,
-    1265498600,
-    2161657372,
-    331544473,
-    28137557,
-    301143164,
-    325973068,
-    148145535,
-    233477736
-  ],
-  "next_cursor": 0,
-  "next_cursor_str": "0",
-  "previous_cursor": 0,
-  "previous_cursor_str": "0"
-};
-    getDataByName(name: string): Observable<any[]> {
+
+    getDataByName(name: string): Observable<any> {
 
         // let authToken = localStorage.getItem('auth_token');
         let headers = new Headers({ 'Accept': 'application/json' });
@@ -44,7 +22,14 @@ private mock= {
 
         let options = new RequestOptions({ headers: headers });
 
-        return Observable.of(this.mock.ids);
+        if(userData[0].id) {
+            if(name ==="s") {
+                return Observable.of(userDataError.errors[0]);
+            }
+            return Observable.of(userData[0].followers_count);
+        }else{
+            return null;
+        }
 
         // return this.http.get(this.heroesUrl+this.name, options)
         //             .map(this.extractData)

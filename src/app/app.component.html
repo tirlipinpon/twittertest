@@ -1,8 +1,13 @@
-<p>nombre de folowwers: {{ nbrFolowers }}</p>
+<app-dropdown> </app-dropdown>
+
+<p>{{ 'HELLO' | translate }}</p>
+<p *ngIf="nbrFolowers!=0">{{ 'followers' | translate }}: {{ nbrFolowers }}</p>
+<p > {{ message }}</p>
 
 <form novalidate (ngSubmit)="send(registerForm)"  [formGroup]="registerForm" >
-        <label for="inputName" >twitter name:</label>
-        <input  id="inputName" formControlName="twittName"  [placeholder]="'INPUT_HINT' | translate" >
-        <button  type="submit" [disabled]="registerForm.invalid" >{{'ADD_BTN_TEXT' | translate}}</button>
-        <p *ngIf="registerForm.invalid ">This field is required!</p>
+        <label for="inputName"  >{{ 'twittername' | translate }}</label>
+        <input appImputName   id="inputName" formControlName="twittName"  placeholder="{{ 'inputname' | translate }}" >
+        <button appButtonAction  type="submit" [disabled]="registerForm.invalid">{{ 'buttonsearch' | translate }}</button>
+        <p *ngIf="registerForm.invalid && registerForm.dirty || buttonPressed">{{ 'required' | translate }}</p>
 </form>
+

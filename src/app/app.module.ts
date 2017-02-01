@@ -4,12 +4,24 @@ import { FormsModule,ReactiveFormsModule   } from '@angular/forms';
 import { SaveService } from '../shared/services/save.service'
 import { RouterModule } from '@angular/router';
 import { HttpModule, JsonpModule  } from '@angular/http';
+import {TranslateModule} from 'ng2-translate';
 
 import { AppComponent } from './app.component';
 
+import { DropdownModule } from 'ng2-bootstrap/dropdown';
+import { DropdownComponent } from '../shared/component/dropdown/dropdown.component';
+import { KeyPipe } from '../shared/pipes/objecttoarray/key.pipe';
+import { ImputNameDirective } from '../shared/directives/imput-name.directive';
+import { ButtonActionDirective } from '../shared/directives/button-action.directive';
+
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DropdownComponent,
+    KeyPipe,
+    ImputNameDirective,
+    ButtonActionDirective,
   ],
   imports: [
     BrowserModule,
@@ -17,14 +29,17 @@ import { AppComponent } from './app.component';
     HttpModule,
     JsonpModule,
     RouterModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    TranslateModule.forRoot(),
+    DropdownModule.forRoot()
   ],
   providers: [SaveService],
-  bootstrap: [AppComponent],
   exports: [
     FormsModule,
     RouterModule,
-    HttpModule
-  ]
+    HttpModule,
+    TranslateModule
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

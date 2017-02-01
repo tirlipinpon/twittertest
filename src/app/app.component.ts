@@ -11,14 +11,16 @@ import { SaveService } from '../shared/services/save.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  nbrFolowers: number;
+  nbrFolowers=0;
   registerForm: FormGroup;
-  private searchTerms = new Subject<string>();
+  message:string;
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       twittName: ['', Validators.required]
     });
+    this.message = "";
+    this.nbrFolowers=0;
   }
 
   constructor(private saveService: SaveService, private formBuilder: FormBuilder) {
@@ -26,12 +28,16 @@ export class AppComponent implements OnInit {
   }
 
   send({ value }: { value: FormGroup }): void {
-    console.log( value['twittName'] );
-
     // this.saveService.getData().subscribe;
     this.saveService.getDataByName(value['twittName']).subscribe(data => {
-        this.nbrFolowers = data.length,
-        console.log(this.nbrFolowers)
+      this.ngOnInit();
+      if(!data.code) {
+        this.nbrFolowers = data,
+        console.log(this.nbrFolowers);
+      }else if (data.code===17){
+        this.message = data.message;
+      }
+
     });
   }
 }
