@@ -1,13 +1,33 @@
-<app-dropdown> </app-dropdown>
+<div class="container-fluid ">
+        <ul class="nav nav-pills">
+                <app-dropdown> </app-dropdown>
+        </ul>
+        <div class="row">
+                <div class="col-md-6">
+                        <div class="panel panel-default">
 
-<p>{{ 'HELLO' | translate }}</p>
-<p *ngIf="nbrFolowers!=0">{{ 'followers' | translate }}: {{ nbrFolowers }}</p>
-<p > {{ message }}</p>
+                                <div class="panel-heading">
+                                        <p>{{ 'HELLO' | translate }} {{ name }}</p>
+                                        <p *ngIf="nbrFolowers!=0">{{ 'followers' | translate }}: {{ nbrFolowers }}</p>
+                                        <p> {{ message }}</p>
+                                </div>
 
-<form novalidate (ngSubmit)="send(registerForm)"  [formGroup]="registerForm" >
-        <label for="inputName"  >{{ 'twittername' | translate }}</label>
-        <input appImputName   id="inputName" formControlName="twittName"  placeholder="{{ 'inputname' | translate }}" >
-        <button appButtonAction  type="submit" [disabled]="registerForm.invalid">{{ 'buttonsearch' | translate }}</button>
-        <p *ngIf="registerForm.invalid && registerForm.dirty || buttonPressed">{{ 'required' | translate }}</p>
-</form>
+                                <div class="panel-body">
 
+
+
+                                        <form class="form-inline" novalidate (ngSubmit)="send(registerForm)" [formGroup]="registerForm">
+                                                <div class="form-group">
+                                                        <label for="inputName">{{ 'twittername' | translate }}</label>
+                                                        <input class="form-control" appImputName id="inputName" formControlName="twittName" placeholder="{{ 'inputname' | translate }}">
+                                                </div>
+
+                                                <button appButtonAction class="btn btn-default" type="button" type="submit" [disabled]="registerForm.invalid">{{ 'buttonsearch' | translate }}</button>
+                                        </form>
+
+                                </div>
+
+                        </div>
+                </div>
+        </div>
+</div>

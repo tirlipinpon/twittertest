@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-
+import { DropdownComponent } from '../shared/component/dropdown/dropdown.component';
 import { SaveService } from '../shared/services/save.service';
 
 @Component({
@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   nbrFolowers=0;
   registerForm: FormGroup;
   message:string;
+  name: string;
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -33,10 +34,12 @@ export class AppComponent implements OnInit {
       this.ngOnInit();
       if(!data.code) {
         this.nbrFolowers = data,
-        console.log(this.nbrFolowers);
-      }else if (data.code===17){
+        this.name = value['twittName']
+        console.log(data);
+      }else if (data.code===17) {// error not found
         this.message = data.message;
       }
+  
 
     });
   }

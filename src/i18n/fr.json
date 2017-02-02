@@ -1,11 +1,12 @@
 {
     "HELLO": "Bonjour",
-    "fr":"francais",
-    "en":"anglais",
-    "followers": "suiveurs",
-    "twittername": "nom twitter",
-    "inputname": "ecrire le nom",
-    "buttonsearch": "recherche",
-    "required": "obligatoire"
+    "fr":"Francais",
+    "en":"Anglais",
+    "followers": "Nombre de suiveurs: ",
+    "twittername": "Nom twitter",
+    "inputname": "Ecrire le nom",
+    "buttonsearch": "Recherche",
+    "required": "Obligatoire",
+    "langue": "Choisir une langue "
 
 }

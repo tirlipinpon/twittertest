@@ -1,10 +1,11 @@
 {
-    "HELLO": "hello",
-    "fr": "french",
-    "en": "english",
-    "followers": "followers",
-    "twittername": "twitter name",
-    "inputname": "write the name",
-    "buttonsearch": "search",
-    "required": "required"
+    "HELLO": "Hello",
+    "fr": "French",
+    "en": "English",
+    "followers": "Numbers of followers:",
+    "twittername": "Twitter name",
+    "inputname": "Write a name",
+    "buttonsearch": "Search",
+    "required": "Required",
+    "langue": "Choose a language "
 }

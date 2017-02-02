@@ -10,12 +10,12 @@ export class ButtonActionDirective {
       isPressed = false;
 
     @HostListener('click') methodToHandleMouseEnterAction(){
-      console.log("click");
+      // console.log("click");
       this.action();
     }
     
     @HostListener('mouseup') methodToHandleMouseExitAction(){
-      console.log("mouseup");
+      // console.log("mouseup");
       this.action();
     }
 

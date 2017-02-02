@@ -20,7 +20,11 @@ export class SaveService {
         let headers = new Headers({ 'Accept': 'application/json' });
         headers.append('Authorization', `Bearer `+this.token);
 
-        let options = new RequestOptions({ headers: headers });
+        // let options = new RequestOptions({ headers: headers });
+        //       this.http.get(this.heroesUrl+name, options)
+        //             .map(this.extractData)
+        //             .publishLast()
+        //             .catch(this.handleError);
 
         if(userData[0].id) {
             if(name ==="s") {
@@ -31,9 +35,7 @@ export class SaveService {
             return null;
         }
 
-        // return this.http.get(this.heroesUrl+this.name, options)
-        //             .map(this.extractData)
-        //             .catch(this.handleError);
+   
     }
 
     private extractData(res: Response) {
