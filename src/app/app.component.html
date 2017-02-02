@@ -1,29 +1,28 @@
 <div class="container-fluid ">
         <ul class="nav nav-pills">
-                <app-dropdown> </app-dropdown>
+                <button (click)="isVisible = !isVisible"  class="btn btn-default" >invisibility {{ isVisible }}</button>
+                <app-dropdown [@isVisibleChanged]="isVisible"> </app-dropdown>
         </ul>
         <div class="row">
                 <div class="col-md-6">
                         <div class="panel panel-default">
 
-                                <div class="panel-heading">
+                                <div class="panel-heading" [@isVisibleChanged]="isVisible">
                                         <p>{{ 'HELLO' | translate }} {{ name }}</p>
                                         <p *ngIf="nbrFolowers!=0">{{ 'followers' | translate }}: {{ nbrFolowers }}</p>
-                                        <p> {{ message }}</p>
+                                        <p> {{ message }} </p>
                                 </div>
-
                                 <div class="panel-body">
-
-
-
                                         <form class="form-inline" novalidate (ngSubmit)="send(registerForm)" [formGroup]="registerForm">
                                                 <div class="form-group">
-                                                        <label for="inputName">{{ 'twittername' | translate }}</label>
+                                                        <label for="inputName">{{ 'twittername' | translate }} </label>
                                                         <input class="form-control" appImputName id="inputName" formControlName="twittName" placeholder="{{ 'inputname' | translate }}">
                                                 </div>
 
-                                                <button appButtonAction class="btn btn-default" type="button" type="submit" [disabled]="registerForm.invalid">{{ 'buttonsearch' | translate }}</button>
+                                                <button  appButtonAction class="btn btn-default" type="button" type="submit" [disabled]="registerForm.invalid">{{ 'buttonsearch' | translate }}</button>
                                         </form>
+                                         <div [hidden]="registerForm.valid || registerForm.controls.twittName.pristine" class="alert alert-danger">  Name is required
+                                        </div>
 
                                 </div>
 
